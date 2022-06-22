@@ -4,10 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <!-- Compressed CSS Zurb Foundation Link-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+    <script
+      async
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Compressed JavaScript Zurb Foundation Link -->
+    <script
+      async
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
+      crossorigin="anonymous"
+    ></script>
     <title>MineSweeper2vs</title>
   </head>
   <body>
-    <div class="" id="new-game-div">
+    <div class="reveal" id="modal_div" data-reveal>
+      <h2 id="modal_title"></h2>
+      <div id="modal_content"></div>
+      <button
+        id="modal_button"
+        class="close-button"
+        data-close
+        aria-label="Close modal"
+        type="button"
+      >
+        <span aria-hidden="true">x</span>
+      </button>
+    </div>
+    <div class="reveal tiny" id="new-game-div" data-reveal>
       <h2>New Game</h2>
       <label for="rows">Rows:</label>
       <input type="number" size="3" id="rows" />
@@ -19,7 +53,42 @@
         <div class="button" id="Start_button">Start New Game</div>
         <div class="button" id="cancel_button">Cancel</div>
       </div>
-      <button class="close-button" type="button"></button>
+      <button
+        class="close-button"
+        data-close
+        aria-label="Close modal"
+        type="button"
+      >
+        <span aria-hidden="true">x</span>
+      </button>
+    </div>
+    <div class="grid-x">
+      <div class="cell auto"></div>
+      <div class="cell medium-4 shrink">
+        <div class="button-group grid-x">
+          <div id="mines_button" class="cell small-4 button secondary hollow">
+            Mines Left: <span id="mines">0</span>
+          </div>
+          <div
+            id="new_game_button"
+            class="cell small-4 button"
+            data-open="new_game_div"
+          >
+            <i class="fal fa-plus-circle"></i> New Game
+          </div>
+          <div id="counter_button" class="cell small-4 button secondary hollow">
+            Time: <span id="time">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="cell auto"></div>
+    </div>
+    <div class="grid-x">
+      <div class="cell auto"></div>
+      <div class="cell shrink text-center">
+        <div id="game_div"></div>
+      </div>
+      <div class="cell auto"></div>
     </div>
   </body>
 </html>
