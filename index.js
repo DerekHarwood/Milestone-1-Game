@@ -197,7 +197,7 @@ function buildNewGame() {
  *            click event
  * @return {null}
  */
- function cellClick(e) {
+ function cellClick() {
     if (!time_interval)
         time_interval = setInterval(updateTime, 1000);
     if (game.lost || game.won || (typeof($(this).data('flag')) != 'undefined' && $(this).data('flag') > 0))
@@ -207,15 +207,15 @@ function buildNewGame() {
         $(this).addClass('hollow');
         if ($(this).data('cell') == -1) { // bomb cell, you lost
             game.lost = true;
-            $(this).html('<i class="fas fa-bomb fa-spin"></i>');
+            $(this).html('<i class="fa fa-bomb fa-spin"></i>');
             $(this).addClass('alert');
             alertModal('You lost');
             $('.mine_cell:not(.hollow)').each(function() {
                 if ($(this).data('cell') == -1) {
                     if ($(this).data('flag') != 1)
-                        $(this).html('<i class="fas fa-bomb"></i>');
+                        $(this).html('<i class="fa fa-bomb"></i>');
                 } else if ($(this).data('flag') == 1) {
-                    $(this).html('<i class="fas fa-times-circle"></i>');
+                    $(this).html('<i class="fa fa-times-circle"></i>');
                 }
             });
         } else if ($(this).data('cell') == 0) { // blank cell, click surrounding
