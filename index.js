@@ -263,7 +263,7 @@ function buildNewGame() {
     if (!$(this).data('triggered')) {
         switch ($(this).data('flag')) {
             case 1:
-                $(this).html('<i class="fas fa-question"></i>');
+                $(this).html('<i class="fa fa-question"></i>');
                 $('#mines').text(parseInt($('#mines').text()) + 1);
                 $(this).data('flag', 2);
                 break;
@@ -275,7 +275,7 @@ function buildNewGame() {
                 if (parseInt($('#mines').text()) == 0) {
                     alert('You do not have any more flags to place.');
                 } else {
-                    $(this).html('<i class="fas fa-flag"></i>');
+                    $(this).html('<i class="fa fa-flag"></i>');
                     $('#mines').text(parseInt($('#mines').text()) - 1);
                     $(this).data('flag', 1);
                     checkIfWon();
