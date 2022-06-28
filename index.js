@@ -16,7 +16,7 @@ $(document).ready(function() {
     $('#cancel_button').click(hideModal);
     $('#rows').val(game.rows);
     $('#cols').val(game.cols);
-    $('#mines').val(game.num_mines);
+    $('#mmines').val(game.num_mines);
     buildNewGame();
 });
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
  function newGame() {
     game.rows = $('#rows').val();
     game.cols = $('#cols').val();
-    game.num_mines = $('#mines').val();
+    game.num_mines = $('#mmines').val();
     game.rows = (game.rows == '') ? 8 : parseInt(game.rows);
     game.cols = (game.cols == '') ? 8 : parseInt(game.cols);
     game.num_mines = (game.num_mines == '') ? 10 : parseInt(game.num_mines);
@@ -244,5 +244,82 @@ function buildNewGame() {
             $(this).text($(this).data('cell'));
         }
         checkIfWon();
+    }
+}
+
+/**
+ * Handles right click events for game cells for placing flags, marking questionable
+ * 
+ * @param e{event}
+ * @return {boolean}(false)
+ */
+ function cellRightClick(e) {
+    if (!time_interval)
+        time_interval = setInterval(updateTime, 1000);
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (game.lost || game.won)
+        return false;
+    if (!$(this).data('triggered')) {
+        switch ($(this).data('flag')) {
+            case 1:
+                $(this).html('<i class="fas fa-question"></i>');
+                $('#mines').text(parseInt($('#mines').text()) + 1);
+                $(this).data('flag', 2);
+                break;
+            case 2:
+                $(this).html('');
+                $(this).data('flag', 0);
+                break;
+            default:
+                if (parseInt($('#mines').text()) == 0) {
+                    alert('You do not have any more flags to place.');
+                } else {
+                    $(this).html('<i class="fas fa-flag"></i>');
+                    $('#mines').text(parseInt($('#mines').text()) - 1);
+                    $(this).data('flag', 1);
+                    checkIfWon();
+                }
+        }
+    }
+    return false;
+}
+
+/**
+ * Called on interval to updated the game time seconds
+ * 
+ * @param N/A
+ * @return {null}
+ */
+function updateTime() {
+    if (!game.lost && !game.won)
+        $('#time').text(parseInt($('#time').text()) + 1);
+    else
+        clearInterval(time_interval);
+}
+
+/**
+ * Checks if the user has won the game based on the following:
+ *    The number of cells not clicked equals the number of mines for the game
+ *    The number of flags remaining equals 0 and all flagged cells are mines
+ * 
+ * @param N/A
+ * @return {null}
+ */
+function checkIfWon() {
+    if (!game.lost && !game.won) {
+        if ($('.mine_cell:not(.hollow)').length == game.num_mines) {
+            game.won = true;
+            alertModal('<h3>You Won!</h3>');
+        } else if (parseInt($('#mines').text()) == 0) {
+            game.won = true;
+            $('.mine_cell:not(.hollow)').each(function() {
+                if (typeof($(this).data('flag')) != 'undefined' && $(this).data('flag') > 0)
+                    if ($(this).data('cell') != -1)
+                        game.won = false;
+            });
+            if (game.won)
+                alertModal('<h3>You Won!</h3>');
+        }
     }
 }
