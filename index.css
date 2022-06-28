@@ -6,10 +6,7 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-body { display: none; }
-.fontawesome-i2svg-active body { display: initial; }
+} 
 
 .mine_cell {
     width: 3rem;
