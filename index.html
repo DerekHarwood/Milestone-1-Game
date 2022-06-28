@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta charset="UTF-8" /> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
@@ -18,15 +18,12 @@
       crossorigin="anonymous"
     />
     <script
-      async
-      type="text/javascript"
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
     <!-- Compressed JavaScript Zurb Foundation Link -->
     <script
-      async
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
       crossorigin="anonymous"
@@ -50,11 +47,11 @@
     <div class="reveal tiny" id="new-game-div" data-reveal>
       <h2>New Game</h2>
       <label for="rows">Rows:</label>
-      <input type="number" size="3" id="rows" />
+      <input type="number" id="rows" />
       <label for="cols">Columns:</label>
-      <input type="number" size="3" id="cols" />
+      <input type="number" id="cols" />
       <label for="mines">Mines:</label>
-      <input type="number" size="3" id="mines" />
+      <input type="number" id="mmines" />
       <div class="button-group">
         <div class="button" id="Start_button">Start New Game</div>
         <div class="button" id="cancel_button">Cancel</div>
@@ -80,7 +77,7 @@
             class="cell small-4 button"
             data-open="new_game_div"
           >
-            <i class="fal fa-plus-circle"></i> New Game
+            <i class="fa fa-plus-circle"></i> New Game
           </div>
           <div id="counter_button" class="cell small-4 button secondary hollow">
             Time: <span id="time">0</span>
@@ -96,5 +93,6 @@
       </div>
       <div class="cell auto"></div>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>
