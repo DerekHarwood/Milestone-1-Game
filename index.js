@@ -118,6 +118,13 @@ $(document).ready(function() {
     hideModal();
 }
 
+const newGameBtn = document.getElementById('new_game_button');
+
+newGameBtn.addEventListener('click', function() {
+    console.log('clicked');
+    newGame();
+})
+
 /**
  * Builds a new game grid, randomly places mines, sets jQuery data attributes of the cell objects for usage in the click/right click
  * 
