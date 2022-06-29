@@ -2,9 +2,6 @@
 body {
     font-size: 14px;
     font-family: Tahoma, Geneva, sans-serif;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 } 
 
 .mine_cell {
@@ -16,5 +13,4 @@ body {
     text-align: center;
     margin: 0.15rem;
     padding: 0px;
-    background: #9b7653;
 }
