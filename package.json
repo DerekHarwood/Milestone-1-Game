@@ -1,0 +1,26 @@
+{
+  "name": "milestone-1-game",
+  "version": "1.0.0",
+  "description": "This is a basic version of the classic minesweeper game. Grid is 8x8 game board with 10 bombs. Has a clock to keep time of how long your game is.",
+  "main": "index.html",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DerekHarwood/Milestone-1-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DerekHarwood/Milestone-1-Game/issues"
+  },
+  "homepage": "https://github.com/DerekHarwood/Milestone-1-Game#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.5.14"
+  },
+  "dependencies": {
+    "jquery": "^3.6.1"
+  }
+}
